@@ -142,4 +142,31 @@ function add($num1, $num2 = 1) {
 }
 echo add(10);    # => 11
 echo add(10, 5); # => 15
+
+
+<?php
+$arr = array(5 => 1, 12 => 2);
+$arr[] = 56;      // Append คือต่อท้าย
+$arr["x"] = 42;   // Add with key เพิ่มคีย์ ถ้ามีอยู่แล้วเอาไปเติมของเก่า
+sort($arr);       // Sort
+unset($arr[5]);   // Remove ลบแค่บางตัวใน arr เช่น unset()
+unset($arr);      // Remove all ลบทั้งตัว arr
+
+$array = array('a', 'b', 'c');
+$count = count($array); //การนับตัวแปลว่ามีกี่ตัว
+
+for ($i = 0; $i < $count; $i++) {
+    echo "i:{$i}, v:{$array[$i]}\n"; //คำสั่งของการนับตัวแปล ถ้าiมีค่าน้อยกว่าตัวแปลให้+1ไปเรื่อยๆ$colors = array('red', 'blue', 'green');
+
+foreach ($colors as $color) {
+    echo "Do you like $color?\n";
+}
+}
+
+$colors = array('red', 'blue', 'green'); //ตั้ง array ว่ามี red blue green
+
+foreach ($colors as $color) {
+    echo "Do you like $color?\n"; //และเอา color มาใส่แทนในคำพูด $color
+}
+
 ?>
