@@ -28,7 +28,7 @@ $c.' '.$d จะมีค่าเป็น Hello World
 
 <?php
  $words ='apple banana orange';
- $space1 = strpos($words,' ');
+ $space1 = strpos($words,' '); 
  $space2 = strpos($words,' ',$space1+1)
 ?>
 

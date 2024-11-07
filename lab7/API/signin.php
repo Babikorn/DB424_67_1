@@ -1,11 +1,12 @@
 <?php
 session_start();
-require 'db.php';
+require '../db.php';
 
 if (isset($_POST['signin'])) {
     $username = $_POST ['username'];
 $password = $_POST['password'];
-$sql =
+try {
+$sql = 
 'SELECT * FROM users 
 JOIN student  
 ON username = studentID
@@ -25,16 +26,29 @@ $stmt = $conn->prepare($sql);
             //$_SESSION['studentID'] = $row ['studentID'];
             //$_SESSION['firstName'] = $row['firstName'];
             //$_SESSION['lastName'] = $row['lastName'];
-            header('Location: index.php'); //เชื่อมว่าถ้าถูกต้องให้ย้ายไปที่หน้าไหน
-            exit(); //เป็นคำสั่งจบเลิก เพราะเปลี่ยนหน้าไปแล้ว
+            //header('Location: index.php'); //เชื่อมว่าถ้าถูกต้องให้ย้ายไปที่หน้าไหน
+            //exit(); //เป็นคำสั่งจบเลิก เพราะเปลี่ยนหน้าไปแล้ว
+           http_response_code(200);
+           echo 'Success';
         }
+
         else {
+            http_response_code(401);
             echo 'Password ไม่ถูกต้อง';
         }
     }
     else {
+        http_response_code(401);
         echo 'Username ไม่ถูกต้อง';
     }
 }
-
+catch (Exception) {
+    http_response_code(500);
+    echo 'Sever error.';
+}
+}
+else {
+    http_response_code(401);
+    echo "Unauthorized.";
+}
 ?>

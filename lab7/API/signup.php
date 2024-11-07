@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../db.php';
 
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
@@ -32,5 +32,9 @@ try{
         catch (Exception $e) {
             echo $e-> getMessage();
         } 
+}
+else {
+    http_response_code(401);
+    echo "Unauthorized.";
 }
 ?>
